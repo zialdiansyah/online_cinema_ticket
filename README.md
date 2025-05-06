@@ -1,6 +1,6 @@
 ## Online Cinema Ticket
 
-# DB Schema
+### DB Schema
 
 
 ![DB Schema](https://github.com/zialdiansyah/online_cinema_ticket/blob/main/db-schema.png?raw=true)
