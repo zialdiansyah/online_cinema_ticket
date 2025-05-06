@@ -6,6 +6,8 @@
 ![DB Schema](https://github.com/zialdiansyah/online_cinema_ticket/blob/main/db-schema.png?raw=true)
 
 
+*note*: is_active di table seats digunakan untuk mengantisipasi layout tempat duduk yang berbeda beda. Jika is_active: false, bisa jadi tempat duduknya rusak atau ada obstacle lainnya(tangga, proyektor, dll). is_active: true bisa digunakan untuk menghitung kapasitas tempat duduk di studio.
+
 
 ```sql
 
@@ -31,7 +33,7 @@ CREATE TABLE seats (
     studio_id INT NOT NULL REFERENCES studios(studio_id) ON DELETE CASCADE,
     seat_row CHAR(2) NOT NULL,
     seat_col INT NOT NULL,
-    row_position INT NOT NULL,
+    row_position INT NOT NULL, -- row_position=1, tempat duduk terdekat dengan layar. 2,3,4, dst. semakin atas
     is_active BOOLEAN DEFAULT TRUE,
     UNIQUE (studio_id, seat_row, seat_col)
 );
