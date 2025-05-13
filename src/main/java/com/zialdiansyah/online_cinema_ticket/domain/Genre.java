@@ -3,19 +3,20 @@ package com.zialdiansyah.online_cinema_ticket.domain;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "cities")
-public class City {
+@Table(name = "genres")
+public class Genre {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer cityId;
+    private Integer genreId;
 
     private String name;
 
-    public Integer getCityId() {
-        return cityId;
+    public Integer getGenreId() {
+        return genreId;
     }
-    public void setCityId(Integer cityId) {
-        this.cityId = cityId;
+    public void setGenreId(Integer genreId) {
+        this.genreId = genreId;
     }
 
     public String getName() {

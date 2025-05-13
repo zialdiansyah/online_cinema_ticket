@@ -1,12 +1,6 @@
 package com.zialdiansyah.online_cinema_ticket.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "cinemas")
@@ -15,6 +9,8 @@ public class Cinema {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cinemaId;
+
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "city_id", nullable = false)
@@ -25,6 +21,13 @@ public class Cinema {
     }
     public void setCinemaId(Integer cinemaId) {
         this.cinemaId = cinemaId;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
     public City getCity() {

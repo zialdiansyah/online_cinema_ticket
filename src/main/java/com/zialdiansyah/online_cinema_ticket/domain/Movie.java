@@ -1,12 +1,9 @@
 package com.zialdiansyah.online_cinema_ticket.domain;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "movies")
@@ -22,6 +19,14 @@ public class Movie {
     private Integer durationMinutes;
 
     private LocalDate releaseDate;
+
+    @ManyToMany
+    @JoinTable(
+        name = "movie_genres",
+        joinColumns = @JoinColumn(name = "movie_id"),
+        inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private List<Genre> genres;
 
     public void setMovieId(Integer movieId) {
         this.movieId = movieId;
