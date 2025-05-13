@@ -10,6 +10,7 @@ public class Genre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer genreId;
 
+    @Column(nullable = false)
     private String name;
 
     public Integer getGenreId() {

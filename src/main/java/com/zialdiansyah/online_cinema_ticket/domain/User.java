@@ -11,6 +11,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false, unique = true)
@@ -23,6 +24,7 @@ public class User {
     @Column(nullable = false)
     private UserRole role;
 
+    @Column(nullable = false)
     private LocalDateTime registeredAt;
 
 

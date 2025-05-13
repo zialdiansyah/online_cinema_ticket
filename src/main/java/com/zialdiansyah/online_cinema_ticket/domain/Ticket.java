@@ -1,7 +1,5 @@
 package com.zialdiansyah.online_cinema_ticket.domain;
 
-import java.time.LocalDateTime;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -18,12 +16,6 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "seat_id", nullable = false)
     private Seat seat;
-
-    private LocalDateTime bookedAt;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 
     public Integer getTicketId() {
         return ticketId;
@@ -44,19 +36,5 @@ public class Ticket {
     }
     public void setSeat(Seat seat) {
         this.seat = seat;
-    }
-
-    public LocalDateTime getBookedAt() {
-        return bookedAt;
-    }
-    public void setBookedAt(LocalDateTime bookedAt) {
-        this.bookedAt = bookedAt;
-    }
-
-    public User getUser() {
-        return user;
-    }
-    public void setUser(User user) {
-        this.user = user;
     }
 }

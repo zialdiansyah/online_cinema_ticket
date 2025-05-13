@@ -9,6 +9,7 @@ public class Studio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studioId;
 
+    @Column(nullable = false)
     private String name;
 
     @ManyToOne

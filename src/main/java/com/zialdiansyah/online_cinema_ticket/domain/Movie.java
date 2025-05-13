@@ -12,12 +12,15 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer movieId;
 
+    @Column(nullable = false)
     private String title;
 
     private String description;
 
+    @Column(nullable = false)
     private Integer durationMinutes;
 
+    @Column(nullable = false)
     private LocalDate releaseDate;
 
     @ManyToMany

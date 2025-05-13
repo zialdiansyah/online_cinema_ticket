@@ -10,6 +10,7 @@ public class Cinema {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cinemaId;
 
+    @Column(nullable = false)
     private String name;
 
     @ManyToOne

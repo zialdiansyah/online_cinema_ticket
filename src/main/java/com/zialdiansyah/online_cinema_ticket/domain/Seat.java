@@ -13,10 +13,13 @@ public class Seat {
     @JoinColumn(name = "studio_id", nullable = false)
     private Studio studio;
 
+    @Column(nullable = false)
     private Integer seatRow;
 
+    @Column(nullable = false)
     private Integer seatColumn;
 
+    @Column(nullable = false)
     private Integer rowPosition;
 
     @Enumerated(EnumType.STRING)
