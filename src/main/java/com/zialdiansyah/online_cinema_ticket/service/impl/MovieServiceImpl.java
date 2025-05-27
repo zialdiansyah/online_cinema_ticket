@@ -1,5 +1,6 @@
 package com.zialdiansyah.online_cinema_ticket.service.impl;
 
+import com.zialdiansyah.online_cinema_ticket.domain.Genre;
 import com.zialdiansyah.online_cinema_ticket.domain.Movie;
 import com.zialdiansyah.online_cinema_ticket.dto.MovieDTO;
 import com.zialdiansyah.online_cinema_ticket.repository.MovieRepository;
@@ -41,6 +42,24 @@ public class MovieServiceImpl implements MovieService {
                 .collect(Collectors.toList());
     
             dto.setGenres(genreName);
+            return dto;
+        }).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<MovieDTO> getComingSoonMovies() {
+        List<Movie> movies = movieRepository.findByReleaseDateAfter(LocalDate.now());
+
+        return movies.stream().map(movie -> {
+            MovieDTO dto = new MovieDTO();
+            dto.setMovieId(movie.getMovieId());
+            dto.setTitle(movie.getTitle());
+            dto.setReleaseDate(movie.getReleaseDate());
+            dto.setGenres(
+                movie.getGenres().stream()
+                    .map(Genre::getName)
+                    .collect(Collectors.toList())
+            );
             return dto;
         }).collect(Collectors.toList());
     }

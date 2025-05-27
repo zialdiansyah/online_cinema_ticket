@@ -1,5 +1,6 @@
 package com.zialdiansyah.online_cinema_ticket.repository;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface MovieRepository extends JpaRepository<Movie, Integer>  {
         @Param("startOfDay") LocalDateTime startOfDay,
         @Param("endOfDay") LocalDateTime endOfDay
     );
+
+    List<Movie> findByReleaseDateAfter(LocalDate date);
 }
