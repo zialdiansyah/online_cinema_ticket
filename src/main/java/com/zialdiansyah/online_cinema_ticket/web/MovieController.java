@@ -26,4 +26,9 @@ public class MovieController {
         List<MovieDTO> movies = movieService.getNowPlayingMoviesByCity(cityId);
         return ResponseEntity.ok(movies);
     }
+
+    @GetMapping("/coming-soon")
+    public ResponseEntity<List<MovieDTO>> getComingSoonMovies() {
+        return ResponseEntity.ok(movieService.getComingSoonMovies());
+    }
 }
