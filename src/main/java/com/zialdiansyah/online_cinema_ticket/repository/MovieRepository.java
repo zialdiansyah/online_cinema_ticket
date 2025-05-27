@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.zialdiansyah.online_cinema_ticket.domain.Movie;
+import com.zialdiansyah.online_cinema_ticket.dto.MovieDTO;
 
 public interface MovieRepository extends JpaRepository<Movie, Integer>  {
     @Query("""
@@ -23,4 +24,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer>  {
     );
 
     List<Movie> findByReleaseDateAfter(LocalDate date);
+
+    MovieDTO getMovieDetailById(Integer movieId);
+    
 }

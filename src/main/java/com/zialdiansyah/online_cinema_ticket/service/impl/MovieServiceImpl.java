@@ -6,6 +6,8 @@ import com.zialdiansyah.online_cinema_ticket.dto.MovieDTO;
 import com.zialdiansyah.online_cinema_ticket.repository.MovieRepository;
 import com.zialdiansyah.online_cinema_ticket.service.MovieService;
 
+import jakarta.persistence.EntityNotFoundException;
+
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -62,5 +64,24 @@ public class MovieServiceImpl implements MovieService {
             );
             return dto;
         }).collect(Collectors.toList());
+    }
+
+    @Override
+    public MovieDTO getMovieDetailById(Integer movieId) {
+        Movie movie = movieRepository.findById(movieId)
+            .orElseThrow(() -> new EntityNotFoundException("Movie not found"));
+
+        MovieDTO dto = new MovieDTO();
+        dto.setMovieId(movie.getMovieId());
+        dto.setTitle(movie.getTitle());
+        dto.setDescription(movie.getDescription());
+        dto.setDurationMinutes(movie.getDurationMinutes());
+        dto.setReleaseDate(movie.getReleaseDate());
+        dto.setGenres(
+            movie.getGenres().stream()
+                .map(Genre::getName)
+                .collect(Collectors.toList())
+        );
+        return dto;
     }
 }
