@@ -1,53 +1,36 @@
-package com.zialdiansyah.online_cinema_ticket.domain;
+package com.zialdiansyah.online_cinema_ticket.dto;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "movies")
-public class Movie {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MovieDTO {
     private Integer movieId;
-
-    @Column(nullable = false)
     private String title;
-
     private String description;
-
-    @Column(nullable = false)
     private Integer durationMinutes;
-
-    @Column(nullable = false)
     private LocalDate releaseDate;
+    private List<String> genres;
 
-    @ManyToMany
-    @JoinTable(
-        name = "movie_genres",
-        joinColumns = @JoinColumn(name = "movie_id"),
-        inverseJoinColumns = @JoinColumn(name = "genre_id")
-    )
-    private List<Genre> genres;
+    public Integer getMovieId() {
+        return movieId;
+    }
 
     public void setMovieId(Integer movieId) {
         this.movieId = movieId;
     }
-    public Integer getMovieId() {
-        return movieId;
+
+    public String getTitle() {
+        return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
-    public String getTitle() {
-        return title;
-    }
 
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -55,6 +38,7 @@ public class Movie {
     public Integer getDurationMinutes() {
         return durationMinutes;
     }
+
     public void setDurationMinutes(Integer durationMinutes) {
         this.durationMinutes = durationMinutes;
     }
@@ -62,16 +46,16 @@ public class Movie {
     public LocalDate getReleaseDate() {
         return releaseDate;
     }
+
     public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
 
-    public List<Genre> getGenres() {
+    public List<String> getGenres() {
         return genres;
     }
-    
-    public void setGenres(List<Genre> genres) {
+
+    public void setGenres(List<String> genres) {
         this.genres = genres;
     }
 }
-
