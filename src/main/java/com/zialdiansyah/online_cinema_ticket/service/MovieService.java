@@ -8,4 +8,5 @@ public interface MovieService {
     List<MovieDTO> getNowPlayingMoviesByCity(Integer cityId);
     List<MovieDTO> getComingSoonMovies();
     MovieDTO getMovieDetailById(Integer movieId);
+    List<MovieDTO> getMoviesByCinema(Integer cinemaId);
 }
