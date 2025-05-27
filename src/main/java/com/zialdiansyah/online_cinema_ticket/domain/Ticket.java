@@ -17,6 +17,10 @@ public class Ticket {
     @JoinColumn(name = "seat_id", nullable = false)
     private Seat seat;
 
+    @ManyToOne
+    @JoinColumn(name = "booking_id", nullable = false)
+    private Booking booking;
+
     public Integer getTicketId() {
         return ticketId;
     }
@@ -36,5 +40,13 @@ public class Ticket {
     }
     public void setSeat(Seat seat) {
         this.seat = seat;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+    
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 }
