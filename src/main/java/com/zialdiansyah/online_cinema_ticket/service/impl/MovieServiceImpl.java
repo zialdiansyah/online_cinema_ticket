@@ -84,4 +84,21 @@ public class MovieServiceImpl implements MovieService {
         );
         return dto;
     }
+
+    @Override
+    public List<MovieDTO> getMoviesByCinema(Integer cinemaId) {
+        List<Movie> movies = movieRepository.findMoviesByCinema(cinemaId);
+        return movies.stream().map(movie -> {
+            MovieDTO dto = new MovieDTO();
+            dto.setMovieId(movie.getMovieId());
+            dto.setTitle(movie.getTitle());
+            dto.setDescription(movie.getDescription());
+            dto.setDurationMinutes(movie.getDurationMinutes());
+            dto.setReleaseDate(movie.getReleaseDate());
+            dto.setGenres(movie.getGenres().stream()
+                .map(g -> g.getName()) // Asumsikan Genre punya method getName()
+                .collect(Collectors.toList()));
+            return dto;
+        }).collect(Collectors.toList());
+    }
 }

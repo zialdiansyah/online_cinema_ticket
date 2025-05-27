@@ -26,5 +26,8 @@ public interface MovieRepository extends JpaRepository<Movie, Integer>  {
     List<Movie> findByReleaseDateAfter(LocalDate date);
 
     MovieDTO getMovieDetailById(Integer movieId);
+
+    @Query("SELECT DISTINCT s.movie FROM Schedule s WHERE s.studio.cinema.cinemaId = :cinemaId")
+    List<Movie> findMoviesByCinema(@Param("cinemaId") Integer cinemaId);
     
 }

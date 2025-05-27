@@ -37,4 +37,9 @@ public class MovieController {
     public ResponseEntity<MovieDTO> getMovieDetail(@PathVariable Integer id) {
         return ResponseEntity.ok(movieService.getMovieDetailById(id));
     }
+
+    @GetMapping("/cinema/{cinemaId}")
+    public List<MovieDTO> getMoviesByCinema(@PathVariable Integer cinemaId) {
+        return movieService.getMoviesByCinema(cinemaId);
+    }
 }
